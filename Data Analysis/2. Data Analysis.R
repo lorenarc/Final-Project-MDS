@@ -1,10 +1,16 @@
 # First of all I set the working directory and install some useful packages.
 
-setwd("C:/Users/satellite/Final-Project-MDS/R Studio")
+setwd("C:/Users/satellite/Final-Project-MDS/Data Analysis/")
 
-install.packages("ggplot2", dependencies = TRUE)
-install.packages("gap", dependencies = TRUE)
-library("ggplot2", "gap")
+if(!require("ggplot2")){
+  install.packages("ggplot2")
+  library("ggplot2")
+}
+
+if (!require("gap")){
+  install.packages("gap")
+  library(gap)
+}
 
 # In all the analisys we will have as a dependent variable "GNIPPP".
 
@@ -16,16 +22,24 @@ hist(log(who1clean$GNIPPP), col="blue", main="Histogram of LOG GNIPPP")
 
 ##### Linear regression #####
 
-modeloCO2 <- lm(GNIPPP ~ CO2_emissions, data=who1clean, na.action=na.exclude)
-modeloCO2log <- lm(log(GNIPPP) ~ CO2_emissions, data=who1clean, na.action=na.exclude)
-summary(modeloCO2)
-summary(modeloCO2log)
+modelpopulation
+modelenergy
+modelinternet
+modelmilitary
+modelsugar
+
+modelCO2 <- lm(GNIPPP ~ CO2_emissions, data=who1clean, na.action=na.exclude)
+modelCO2log <- lm(log(GNIPPP) ~ CO2_emissions, data=who1clean, na.action=na.exclude)
+summary(modelCO2)
+summary(modelCO2log)
 
 plot(who1clean[,"GNIPPP"], who1clean[,"CO2_emissions"], main="Relation GNIPPP_CO2", col="brown")
 
 ggplot(who1clean, aes(x = CO2_emissions, y = GNIPPP)) + geom_point() + 
   geom_smooth(method = "lm", se=TRUE, color="red", formula = y ~ x)
 
+ggplot(who1clean, aes(x = CO2_emissions, y = log(GNIPPP))) + geom_point() + 
+  geom_smooth(method = "lm", se=TRUE, color="red", formula = y ~ x)
 
 
 

@@ -1,16 +1,24 @@
 # For all the project, firtsly I get the path and set the working directory.
 getwd()
-setwd("C:/Users/satellite/Final-Project-MDS/R Studio")
+setwd("C:/Users/satellite/Final-Project-MDS/Data Cleaning/")
 
 # Then I install and load some packages that it will be useful for cleaning and processing the data tables.
-install.packages("dplyr", dependencies = TRUE)
-install.packages("data.table", dependencies = TRUE)
-install.packages("mice", dependencies = TRUE)
-install.packages("VIM", dependencies = TRUE)
 
-library("dplyr","data.table")
-library("mice")
-library("VIM")
+
+if(!require("dplyr")){
+  install.packages("dplyr", dependencies = TRUE)
+  library("dplyr")
+}
+
+if (!require("data.table")){
+  install.packages("data.table", dependencies = TRUE)
+  library("data.table")
+}
+
+if(!require("VIM")){
+  install.packages("VIM", dependencies = TRUE)
+  library("VIM")
+}
 
 # Now I load the dataset, I can do it directly from the website as follow:
 who1 <- read.csv('https://query.data.world/s/8Pb1O_ASzuDGfaFfGu6w6kLT6t6IwL', header=TRUE,stringsAsFactors = FALSE)
