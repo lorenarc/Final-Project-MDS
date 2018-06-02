@@ -1,6 +1,15 @@
-# First of all I set the working directory and install some useful packages.
+
+#### FINAL MASTER PROJECT: ANALYSIS OF INEQUALITY FACTORS BETWEEN COUNTRIES ####
+
+#### BY LORENA RECIO @ KSCHOOL
+
+# *****************************************************************************
+
+####-------------------1. SET WORKING DIRECTORY AND INSTALL PACKAGES--------------------####
+
 
 setwd("C:/Users/satellite/Final-Project-MDS/Data Analysis/")
+# ATTENTION! Path of working directory change depends on the computer that you work.
 
 if(!require("ggplot2")){
   install.packages("ggplot2")
@@ -12,6 +21,23 @@ if (!require("gap")){
   library(gap)
 }
 
+# *****************************************************************************
+
+####-------------------2. LOADING AND TRANSFORMING DATA--------------------####
+
+who <- read.csv('../DATASETS/whocomplete.csv', dec=".",sep=";", header=T, stringsAsFactors = FALSE)
+
+# ATTENTION!Path of the file must be modified by the one that applies for avoid operating errors.
+
+# I change the name of "Gross national income per capita (PPP international $)" feature to "GNIPPP".
+
+names(who)[5] <- "GNIPPP"
+
+
+# *****************************************************************************
+
+####-------------------3. PREVISUALIZATION--------------------####
+
 # In all the analisys we will have as a dependent variable "GNIPPP".
 
 hist(who1clean$GNIPPP, col="red", main="Histogram of GNIPPP")
@@ -20,7 +46,7 @@ hist(who1clean$GNIPPP, col="red", main="Histogram of GNIPPP")
 hist(log(who1clean$GNIPPP), col="blue", main="Histogram of LOG GNIPPP")
 
 
-##### Linear regression #####
+####-------------------4. LINEAR REGRESSION--------------------####
 
 modelpopulation
 modelenergy
@@ -40,7 +66,3 @@ ggplot(who1clean, aes(x = CO2_emissions, y = GNIPPP)) + geom_point() +
 
 ggplot(who1clean, aes(x = CO2_emissions, y = log(GNIPPP))) + geom_point() + 
   geom_smooth(method = "lm", se=TRUE, color="red", formula = y ~ x)
-
-
-
-
