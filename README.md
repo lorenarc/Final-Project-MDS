@@ -13,6 +13,6 @@ This repository contains the memory of the project and the following directories
 
  - DATASET: All the necessary data to carry out the project.
  - DATA CLEANING: Code to work with python for load, transform and clean 
-                  WHO dataset.
- - DATA ANALYSIS: Python and R code to analyze WHOCOMPLETE dataset.
- - VISUALIZATION: Data visualization with R Studio
+                  "WHO" dataset.
+ - DATA ANALYSIS: Python and R code to analyze "whocomplete" and "WhodfR" 		  dataset.
+ - VISUALIZATION: Data visualization with Tableau Public.
